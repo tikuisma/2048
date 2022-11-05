@@ -41,6 +41,9 @@ Projektin dokumentaatio, koodi ja kommentit tulevat olemaan suomen kielellä.
 
 Käytän pelin tekemiseen Minimax-algoritmia, jota tehostetaan Alpha beta karsinta -algoritmilla. Se siis karsii siirtovaihtoehtoja pois, jotta kaikkia eri skenaarioita ei tarvitse käydä läpi (Zadrozny 2018). Vaikka pelissä ei virallisesti ole kahta pelaajaa, voi peliä ajatella ns. kaksinpelinä (Lazar 2020). Siksi minimax-algoritmi sopii pelissä hyvin käytettäväksi. Pelaajan tavoitteenahan on maksimoida pisteensä pelissä ja satunnaisesti tulevia palikoita voidaan taas pitää ns. vihollisena, sillä sen voi ajatella yrittävän sijoittaa tulevia palikoita mahdollisimman huonoihin kohtiin oman pelin kannalta.  
 
+## Aika- ja tilavaativuudet 
+
+Täydentyy projektin edetessä.
 
 ## Lähteet
 
