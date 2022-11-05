@@ -1,3 +1,6 @@
 # 2048-peli
 
-Tietorakenteet ja algoritmit -harjoitustyö on osa Helsingin yliopiston Tietojenkäsittelytieteen aineopintoja.
+- [Viikkoraportti 1](https://github.com/tikuisma/2048/blob/master/dokumentaatio/viikkoraportti_1.md)
+
+
+2048-pelin tekeminen on osa Tietorakenteet ja algoritmit -harjoitustyötä Tietojenkäsittelytieteen aineopinnoissa Helsingin yliopistossa.
