@@ -1,4 +1,4 @@
-#﻿ Vaatimusmäärittely
+# Vaatimusmäärittely
 
 ## Pelin tarkoitus
 
