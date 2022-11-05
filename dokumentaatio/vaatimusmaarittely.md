@@ -6,6 +6,7 @@
 
 Pelaajan siirtojen määrää seurataan pelin aikana. Mikäli pelaaja on pelannut pelin onnistuneesti läpi, pääsee pelaaja top 10 pelaajan joukkoon, mikäli se on tehnyt vähemmän siirtoja kuin listalla jo olevat pelaajat.
 
+Pelin tekeminen on osa tietojenkäsittelytieteen kandidaatin (TKT) opintoja.
 
 ## Käyttöliittymä
 
@@ -41,6 +42,5 @@ Käytän pelin tekemiseen Minimax-algoritmia, jota tehostetaan Alpha beta karsin
 ## Lähteet
 
 Lazar, D. 2020. How to apply Minimax to 2048. Päivitetty: 27.9.2020. Luettu: 5.11.2022. Saatavissa: [How to apply Minimax to 2048 (towardsdatascience.com)](https://towardsdatascience.com/playing-2048-with-minimax-algorithm-1-d214b136bffb).
-Harjoitustyön tekeminen on osa tietojenkäsittelytieteen kandidaatin (TKT) opintoja. 
 
 Zadrozny, B. 2018. Beginner's guide to AI and writing your own bot for the 2048 game. Päivitetty: 10.10.2018. Luettu: 5.11.2022. Saatavissa: [Beginner's guide to AI and writing your own bot for the 2048 game (medium.com)](https://medium.com/@bartoszzadrony/beginners-guide-to-ai-and-writing-your-own-bot-for-the-2048-game-4b8083faaf53).
