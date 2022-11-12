@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "2048"
+version = "0.1.0"
+description = ""
+authors = ["Tiina <tiina.kuisma@helsinki.fi>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.8"
+
+
+[tool.poetry.group.dev.dependencies]
+pylint = "^2.15.5"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
