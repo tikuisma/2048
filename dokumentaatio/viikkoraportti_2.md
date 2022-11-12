@@ -2,7 +2,7 @@
 
 ## Mitä olen tehnyt/oppinut tällä viikolla?
 
-Olen aloittanut tekemään peliä ja tällä hetkellä pelissä onnistuu tekemään siirrot vasemmalle.
+Olen aloittanut tekemään peliä ja tällä hetkellä pelissä onnistuu tekemään siirrot vasemmalle. Tehtyä koodia on myös kommentoitu.
 Testausta en tällä viikolla ehtinyt aloittamaan.
 Koodin laatutarkistuksia varten asensin riippuvuudeksi Pylintin. Pylintin konfiguraatiotiedostoon laitoin Ohjelmistotekniikka-kurssillakin käytetyt säännöt. 
 
