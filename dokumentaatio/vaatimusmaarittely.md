@@ -13,7 +13,7 @@ Pelin tekeminen on osa tietojenkäsittelytieteen kandidaatin (TKT) opintoja.
 
 ## Käyttöliittymä
 
-Pelin käyttöliittymän tyyppi ei ole vielä varma, joko se on graafinen tai tekstipohjainen. (Tämä kohta tulee täydentymään vasta siinä kohtaa, kun sovellus etenee ja valinta on tehty.)
+Pelin käyttöliittymän tyyppi tulee olemaan tekstipohjainen.
 
 
 ## Sovelluksen toiminnallisuus
