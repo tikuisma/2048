@@ -7,7 +7,7 @@ Repositorio-luokkaa ´´Pelialusta´´ testataan antamalla sille oma generoitu p
 
 ### Testauskattavuus
 Testauskattavuus tällä hetkellä vielä matala, sillä testien tekeminen on kesken.
-Testauskattavuusraportin voit katsoa täältä: []().
+Testauskattavuusraportin voit katsoa täältä: [Codecov](https://app.codecov.io/gh/tikuisma/2048).
 
 ## Järjestelmätestaus
 Pelin käyttöliittymän testaus on toteutettu manuaalisesti tekstikäyttöliittymässä.
