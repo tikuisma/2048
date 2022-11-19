@@ -1,3 +1,5 @@
 src/__pycache__
 .pylintrc
 .coverage
+src/tests/__pycache__
+.pytest_cache

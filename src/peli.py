@@ -28,6 +28,7 @@ class Pelialusta:
         print("'D' or 'd' = Oikealle")
 
         self.vapaat_paikat = []
+        self.siirtojen_lkm = 0
 
     def ilmestyva_numero(self):
         """Pelin alkaessa pelialustalle tulee satunnaiseen kohtaan joko numero
@@ -75,6 +76,7 @@ class Pelialusta:
         Args:
             suunta: Käyttäjän antama syöte halutusta suunnasta pelialustalla.
         """
+        self.siirtojen_lkm += 1
 
         if suunta == "W" or suunta == "w":
             self.kaanto(1)
@@ -102,14 +104,15 @@ class Pelialusta:
         Args:
             ei_nollia: Pelialusta, josta puuttuvat vapaat paikat eli nollat.
         """
+        print(ei_nollia)
         for i in range(len(ei_nollia)):
             while len(ei_nollia[i]) < 4:
                 ei_nollia[i].append(0)
         self.pelialusta = ei_nollia
 
     def yhdistyminen(self):
-        """Katsoo siirron jälkeen vierekkäiset numerot (tällä hetkellä vain
-        vasemmalta luettuna) voisiko ne yhdistää toisiinsa.
+        """Siirron jälkeen katsotaan vierekkäiset numerot, jotta ne voitaisiin
+        mahdollisesti yhdistää toisiinsa.
         """
 
         ei_nollia = self.poista_nollat()
@@ -145,12 +148,16 @@ class Pelialusta:
     def poista_nollat(self):
         """Tarkistaa vapaat paikat pelialustalla eli nollien paikat, jonka
         jälkeen poistaa nämä.
+
+        Returns:
+            ei_nollia: palauttaa pelialustan, josta on poistettu vapaat paikat.
         """
 
         ei_nollia = self.pelialusta
         self.etsi_nollat()
         for i in range(len(self.vapaat_paikat)-1,-1,-1):
             ei_nollia[self.vapaat_paikat[i][0]].pop(self.vapaat_paikat[i][1])
+
         return ei_nollia
 
     def kaanto(self, kierrokset):
@@ -174,8 +181,12 @@ class Pelialusta:
 
     def __str__(self) -> str:
         """Tulostaa tekstikäyttöliittymässä näkyvän pelialustan.
+
+        Returns:
+            tuloste: palauttaa pelialustan.
         """
 
         tuloste = f"{self.pelialusta[0]}\n{self.pelialusta[1]}\
         \n{self.pelialusta[2]}\n{self.pelialusta[3]}"
+
         return tuloste

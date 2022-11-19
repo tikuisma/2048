@@ -4,12 +4,12 @@ from peli import Pelialusta
 class TestPelialusta(unittest.TestCase):
     def setUp(self):
         self.alusta = Pelialusta()
+        self.alusta.pelialusta = [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]]
 
     def test_peli(self):
         self.assertEqual(self.alusta.peli_havitty, False)
         self.assertEqual(self.alusta.vapaat_paikat, [])
         self.assertEqual(self.alusta.pelialusta, [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]]) 
-
 
     def test_ilmestyva_numero(self):
         self.alusta.numeron_asetus(2)
@@ -35,5 +35,15 @@ class TestPelialusta(unittest.TestCase):
             self.alusta.pelialusta.append([2]*4)
         self.alusta.numeron_asetus(2)
         self.assertEqual(self.alusta.peli_havitty, True)
-
     
+    def test_siirto(self):
+        muuttuja = self.alusta.siirto("k")
+        self.assertEqual(muuttuja, False)
+    
+    def test_lisaa_nollat(self):
+        muuttuja = [[4, 2], [], [], []]
+        self.assertEqual(self.alusta.lisaa_nollat(muuttuja), None)
+    
+    def test_poista_nollat(self):
+        muuttuja = [[], [], [], []]
+        self.assertEqual(self.alusta.poista_nollat(), muuttuja)

@@ -20,6 +20,8 @@ def main():
             if ennen != str(peli.pelialusta):
                 peli.ilmestyva_numero()
             print(peli)
+            if peli.siirto(syote) is False:
+                print("Väärä komento")
         else:
             print("Väärä komento")
 
