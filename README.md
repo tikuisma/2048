@@ -6,4 +6,6 @@
 
 Koodin Pylint-pisteytys tällä hetkellä 9.04/10
 
+Koodin tila: ![GHA workflow badge](https://github.com/tikuisma/2048/workflows/CI/badge.svg)
+
 2048-pelin tekeminen on osa Tietorakenteet ja algoritmit -harjoitustyötä Tietojenkäsittelytieteen aineopinnoissa Helsingin yliopistossa.
