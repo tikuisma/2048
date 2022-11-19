@@ -3,7 +3,7 @@ Ohjelmaa on testattu automatisoiduilla unittest-testeillä.
 
 ## Yksikkö- ja integraatiotestaus
 ### Repositorio-luokat
-Repositorio-luokkaa ´´Pelialusta´´ testataan antamalla sille oma generoitu pelialusta ja tällä testataan luokan metodeita.
+Repositorio-luokkaa ``Pelialusta`` testataan antamalla sille oma generoitu pelialusta ja tällä testataan luokan metodeita.
 
 ### Testauskattavuus
 Testauskattavuus tällä hetkellä vielä matala, sillä testien tekeminen on kesken.
