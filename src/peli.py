@@ -104,7 +104,7 @@ class Pelialusta:
         Args:
             ei_nollia: Pelialusta, josta puuttuvat vapaat paikat eli nollat.
         """
-        print(ei_nollia)
+
         for i in range(len(ei_nollia)):
             while len(ei_nollia[i]) < 4:
                 ei_nollia[i].append(0)
