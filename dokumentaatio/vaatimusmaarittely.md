@@ -2,7 +2,7 @@
 
 ## Pelin tarkoitus
 
-2048-pelin tarkoituksena on liu’uttaa ilmestyviä palikoita niin, että saadaan palikassa olevaa lukumäärää kasvatettua. Peli on yksinpeli ja sen pelialustana toimii 4 x 4 oleva ruudukko. Peliin ilmestyy aina palikka satunnaisesti mihin tahansa tyhjään olevaan ruutuun jokaisen tehdyn siirron jälkeen. Palikassa om aina numero 2 tai 4. Pelissä siirrytään vetämällä palikoita joko vasemmalle, oikealle, ylös tai alas. Mikäli vierekkäiset numerot ovat samat, palikat yhdistyvät ja pistemäärä plussaantuu eli esimerkiksi 4 + 4 tulee yksi kuutiopalikka, jossa on luku 8. Pelaajan kerättyä kuutiopalikka, jossa on luku 2048, on päässyt pelin läpi. Läpäistyään pelin, pelaaja voi halutessaan vielä jatkaa peliä tai lopettaa.
+2048-pelin tarkoituksena on liu’uttaa ilmestyviä palikoita niin, että saadaan palikassa olevaa lukumäärää kasvatettua. Peli on yksinpeli ja sen pelialustana toimii 4 x 4 oleva ruudukko. Peliin ilmestyy aina palikka satunnaisesti mihin tahansa tyhjään olevaan ruutuun jokaisen tehdyn siirron jälkeen. Palikassa om aina numero 2 tai 4. Pelissä siirrytään vetämällä palikoita joko vasemmalle, oikealle, ylös tai alas. Mikäli vierekkäiset numerot ovat samat, palikat yhdistyvät ja pistemäärä plussaantuu eli esimerkiksi 4 + 4 tulee yksi kuutiopalikka, jossa on luku 8. Mikäli pelaaja yrittää liikkua suuntaan, jossa pelilaudalla ei tapahtuisi mitään, pelaajan tulee tehdä siirto uudelleen. Pelaajan kerättyä kuutiopalikka, jossa on luku 2048, on päässyt pelin läpi ja peli päättyy.
 
 ![image](https://user-images.githubusercontent.com/93583969/200129692-23c3b1ca-a204-416b-8e20-13d792ecab16.png)
 (Kuva: Statt 2014)
@@ -26,9 +26,7 @@ Alussa valitaan pelaaja ja se on joko ihmispelaaja tai tekoäly. Valinnan jälke
 
 Mikäli peli on pelattu onnistuneesti läpi. Tarkastetaan pelaajan tekemien siirtojen määrä. Mikäli siirtojen määrä alittaa top 10 -listalla olevien pelaajien siirrot, saa pelaaja syöttää oman nimen/nimimerkin, jonka jälkeen nimi siirtyy listalle. Pelissä ei siis ole sisäänkirjautumista, vaan päästessään parhaiden joukkoon, pelaaja saa syöttää nimensä siinä kohtaa. Tekoälyn päästessä listalle, lisätään se automaattisesti ja merkitään tekoälyn tulokseksi.
 
-Mikäli ihmispelaaja on päässyt pelin läpi, saa hän jatkaa pelaamista vielä niin halutessaan. Näistä kertyneitä tuloksia ei kuitenkaan kerätä enää minnekään.
-
-Tekoälyn peli loppuu joko häviämiseen tai 2048 tulokseen. Se ei voi jatkaa pelin pelaamista, vaikka olisi pelin läpäissytkin.
+Ihmispelaajan sekä tekoälyn peli loppuu joko häviämiseen tai 2048 tulokseen. Peliä ei voi jatkaa, vaikka sen olisi onnistuneesti läpäissyt.
 
 
 ## Käytettävät kielet
