@@ -11,7 +11,7 @@ Koodin tila: ![GHA workflow badge](https://github.com/tikuisma/2048/workflows/CI
 
 Codecov: [![codecov](https://codecov.io/gh/tikuisma/2048/branch/master/graph/badge.svg?token=82IQ3KECIQ)](https://codecov.io/gh/tikuisma/2048)
 
-VERTAISARVIOIJALLE (käyttöliittymän kokeilua varten):
+Käyttöliittymän kokeilua varten:
 Mikäli haluat testata ihmispelaajan versiota. Kloonaa repo omalle koneelle. Siirry sitten src-kansion sisälle ja aja komento: python3 main.py, jolloin peli lähtee käyntiin.
 
 2048-pelin tekeminen on osa Tietorakenteet ja algoritmit -harjoitustyötä Tietojenkäsittelytieteen aineopinnoissa Helsingin yliopistossa.
