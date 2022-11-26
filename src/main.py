@@ -1,4 +1,5 @@
 from peli import Pelialusta
+import algoritmi
 
 def main():
     """Pääfunktio, josta kutsutaan pelialustan tekevää luokkaa ja sen metodeita.
@@ -9,21 +10,34 @@ def main():
 
     syotteet = ["a","A","w","W","d","D","s","S"]
 
-    peli = Pelialusta()
-    peli.ilmestyva_numero()
-    print(peli)
-    while peli.peli_havitty is False:
-        syote = input("Anna suunta: ")
-        if syote in syotteet:
-            ennen = str(peli.pelialusta)
-            peli.siirto(syote)
-            if ennen != str(peli.pelialusta):
-                peli.ilmestyva_numero()
-            print(peli)
-            if peli.siirto(syote) is False:
+    valinta = input("Jos haluat pelata itse, syötä X. Mikäli haluat katsoa,\n"
+    "tekoälyn pelaamista, valitse Y.\n"
+    "Syötä valintasi: ")
+    if valinta == "X" or valinta == "x":
+        peli = Pelialusta()
+        peli.ilmestyva_numero()
+        print("Voit liikkua pelialustalla seuraavilla näppäimillä:")
+        print("'W' or 'w' = Ylös")
+        print("'S' or 's' = Alas")
+        print("'A' or 'a' = Vasemmalle")
+        print("'D' or 'd' = Oikealle")
+        print(peli)
+        while peli.peli_havitty is False and peli.peli_loppu is False:
+            syote = input("Anna suunta: ")
+            if syote in syotteet:
+                ennen = str(peli.pelialusta)
+                peli.siirto(syote)
+                if ennen != str(peli.pelialusta):
+                    peli.ilmestyva_numero()
+                    print(peli)
+                else:
+                    print("Tähän suuntaan ei voi siirtää, kokeile toista suuntaa.")
+            else:
                 print("Väärä komento")
-        else:
-            print("Väärä komento")
+    if valinta == "Y" or valinta == "y":
+        algoritmi
+    else:
+        print("Et valinnut kumpaakaan. Ole hyvä ja yritä uudelleen.")
 
 if __name__ == "__main__":
     main()

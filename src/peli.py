@@ -17,18 +17,12 @@ class Pelialusta:
         """
 
         self.peli_havitty = False
+        self.peli_loppu = False
         self.pelialusta = []
         for i in range(4):
             self.pelialusta.append([0]*4)
 
-        print("Voit liikkua pelialustalla seuraavilla näppäimillä:")
-        print("'W' or 'w' = Ylös")
-        print("'S' or 's' = Alas")
-        print("'A' or 'a' = Vasemmalle")
-        print("'D' or 'd' = Oikealle")
-
         self.vapaat_paikat = []
-        self.siirtojen_lkm = 0
 
     def ilmestyva_numero(self):
         """Pelin alkaessa pelialustalle tulee satunnaiseen kohtaan joko numero
@@ -60,7 +54,6 @@ class Pelialusta:
         """
 
         self.etsi_nollat()
-       # print(self.vapaat_paikat)
         if len(self.vapaat_paikat) == 0:
             self.peli_havitty = True
         else:
@@ -76,7 +69,6 @@ class Pelialusta:
         Args:
             suunta: Käyttäjän antama syöte halutusta suunnasta pelialustalla.
         """
-        self.siirtojen_lkm += 1
 
         if suunta == "W" or suunta == "w":
             self.kaanto(1)
@@ -96,6 +88,8 @@ class Pelialusta:
             self.poista_nollat()
             self.yhdistyminen()
             self.kaanto(2)
+
+        self.peli_voitettu()
 
     def lisaa_nollat(self, ei_nollia):
         """Lisää poistetut nollat takaisin vapaisiin kohtiin pelialustalla,
@@ -122,7 +116,6 @@ class Pelialusta:
                 uusi_rivi = []
                 j = 0
                 while j < len(i):
-                    print(j)
                     if j == len(i)-1:
                         uusi_luku = i[j]
                         j += 1
@@ -130,7 +123,6 @@ class Pelialusta:
                         uusi_luku = i[j] + i[j+1]
                         j += 2
                         ei_sama = False
-
                     else:
                         uusi_luku = i[j]
                         j += 1
@@ -178,6 +170,13 @@ class Pelialusta:
                 for j in range(3, -1, -1):
                     tyhja[j].append(self.pelialusta[i][::-1][j])
             self.pelialusta = tyhja
+
+    def peli_voitettu(self):
+        max_arvo = 2048
+        for i in self.pelialusta:
+            if max(i) == max_arvo:
+                self.peli_loppu = True
+
 
     def __str__(self) -> str:
         """Tulostaa tekstikäyttöliittymässä näkyvän pelialustan.
