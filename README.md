@@ -6,7 +6,7 @@
 - [Viikkoraportti 4](https://github.com/tikuisma/2048/blob/master/dokumentaatio/viikkoraportti_4.md)
 - [Viikkoraportti 5](https://github.com/tikuisma/2048/blob/master/dokumentaatio/viikkoraportti_5.md)
 
-Koodin Pylint-pisteytys tällä hetkellä 9.35/10 (algoritmi.py ei valmis, joka tuo pisteytystä alas)
+Koodin Pylint-pisteytys tällä hetkellä 9.35/10
 
 Koodin tila: ![GHA workflow badge](https://github.com/tikuisma/2048/workflows/CI/badge.svg)
 
