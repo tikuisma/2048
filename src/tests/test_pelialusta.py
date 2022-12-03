@@ -21,12 +21,12 @@ class TestPelialusta(unittest.TestCase):
         self.assertEqual(summa, 2)
 
     def test_etsi_nollat_tyhja(self):
-        self.alusta.etsi_nollat()
+        self.alusta.etsi_nollat(self.alusta.pelialusta)
         self.assertEqual(self.alusta.vapaat_paikat, [(0, 0), (0, 1), (0, 2), (0, 3), (1, 0), (1, 1), (1, 2), (1, 3), (2, 0), (2, 1), (2, 2), (2, 3), (3, 0), (3, 1), (3, 2), (3, 3)])
 
     def test_etsi_nollat_ei_tyhja(self):
         self.alusta.ilmestyva_numero()
-        self.alusta.etsi_nollat()
+        self.alusta.etsi_nollat(self.alusta.pelialusta)
         self.assertEqual(len(self.alusta.vapaat_paikat), 15)
 
     def test_peli_havitty(self):
@@ -38,12 +38,11 @@ class TestPelialusta(unittest.TestCase):
 
     def test_lisaa_nollat(self):
         muuttuja = [[4, 2], [], [], []]
-        self.alusta.lisaa_nollat(muuttuja)
-        self.assertEqual(self.alusta.pelialusta, [[4, 2, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]])
+        self.assertEqual(self.alusta.lisaa_nollat(muuttuja), [[4, 2, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]])
 
     def test_poista_nollat(self):
         self.alusta.pelialusta = [[4, 2, 0, 0], [0, 0, 2, 0], [0, 0, 0, 0], [0, 0, 0, 0]]
-        self.assertEqual(self.alusta.poista_nollat(), [[4, 2], [2], [], []])
+        self.assertEqual(self.alusta.poista_nollat(self.alusta.pelialusta), [[4, 2], [2], [], []])
 
     def test_siirto(self):
         self.alusta.pelialusta = [[0, 0, 0, 0], [0, 2, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]]
@@ -68,13 +67,10 @@ class TestPelialusta(unittest.TestCase):
 
     def test_yhdistyminen(self):
         self.alusta.pelialusta = [[0, 0, 0, 0], [2, 2, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]]
-        self.alusta.yhdistyminen()
-        self.assertEqual(self.alusta.pelialusta, [[0, 0, 0, 0], [4, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]])
+        self.assertEqual(self.alusta.yhdistyminen(self.alusta.pelialusta), [[], [4], [], []])
 
         self.alusta.pelialusta = [[0, 0, 0, 0], [2, 2, 2, 0], [0, 0, 0, 0], [0, 0, 0, 0]]
-        self.alusta.yhdistyminen()
-        self.assertEqual(self.alusta.pelialusta, [[0, 0, 0, 0], [4, 2, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]])
+        self.assertEqual(self.alusta.yhdistyminen(self.alusta.pelialusta), [[], [4, 2], [], []])
 
         self.alusta.pelialusta = [[0, 0, 0, 0], [2, 4, 2, 4], [0, 0, 0, 0], [0, 0, 0, 0]]
-        self.alusta.yhdistyminen()
-        self.assertEqual(self.alusta.pelialusta, [[0, 0, 0, 0], [2, 4, 2, 4], [0, 0, 0, 0], [0, 0, 0, 0]])
+        self.assertEqual(self.alusta.yhdistyminen(self.alusta.pelialusta), [[], [2, 4, 2, 4], [], []])

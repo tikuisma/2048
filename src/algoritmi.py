@@ -1,7 +1,5 @@
+import sys, copy
 from peli import Pelialusta
-import sys
-
-# HUOM! EI VIELÄ TOIMINNASSA!!
 
 class Algoritmi:
     """Luokka, joka luo Minimax-algoritmin, jotta peli pelaisi itse itseään.
@@ -21,30 +19,29 @@ class Algoritmi:
         self.kokeileva_peli = Pelialusta()
 
     def mahdolliset_siirrot(self, pelilauta):
-    #palauttaa listan mahdollisista siirtosuunnista
         """Kokeillaan mahdolliset pelilaudan siirtosuunnat ja palautetaan ne
-        listana
+        listana.
         """
 
-        alkuperainen = str(pelilauta)
-        self.kokeileva_peli.pelialusta = pelilauta
+        alkuperainen = copy.deepcopy(pelilauta)
+        self.kokeileva_peli.pelialusta = copy.deepcopy(pelilauta)
         siirrot = []
 
         self.kokeileva_peli.siirto("w")
         if alkuperainen != self.kokeileva_peli.pelialusta:
             siirrot.append("w")
 
-        self.kokeileva_peli.pelialusta = pelilauta
+        self.kokeileva_peli.pelialusta = copy.deepcopy(pelilauta)
         self.kokeileva_peli.siirto("s")
         if alkuperainen != self.kokeileva_peli.pelialusta:
             siirrot.append("s")
 
-        self.kokeileva_peli.pelialusta = pelilauta
+        self.kokeileva_peli.pelialusta = copy.deepcopy(pelilauta)
         self.kokeileva_peli.siirto("a")
         if alkuperainen != self.kokeileva_peli.pelialusta:
             siirrot.append("a")
 
-        self.kokeileva_peli.pelialusta = pelilauta
+        self.kokeileva_peli.pelialusta = copy.deepcopy(pelilauta)
         self.kokeileva_peli.siirto("d")
         if alkuperainen != self.kokeileva_peli.pelialusta:
             siirrot.append("d")
@@ -52,32 +49,56 @@ class Algoritmi:
         return siirrot
 
     def pelilaudan_arvo(self, pelilauta):
-    #laskee pelilaudan arvon eli minkä perusteella siirto tehdään
+        """Hyötyfunktio minmax-algoritmille, joka laskee arvon sen hetkiselle
+        pelilaudalle.
+        """
+
         self.kokeileva_peli.pelialusta = pelilauta
         summa = 0
         for rivi in pelilauta:
             for numero in rivi:
                 summa += numero
 
-        self.kokeileva_peli.etsi_nollat()
+        self.kokeileva_peli.etsi_nollat(pelilauta)
         arvo = summa / (16 - len(self.kokeileva_peli.vapaat_paikat))
 
         return arvo
 
+    def min_siirrot(self, pelilauta):
+        """Metodi katsoo ns. vastapelaajan Min:n siirrot.
+        """
+
+        self.kokeileva_peli.etsi_nollat(pelilauta)
+        siirrot = self.kokeileva_peli.vapaat_paikat
+        siirrot2 = []
+        for tyhja in siirrot:
+            tyhja = list(tyhja)
+            tyhja2 = list(tyhja)
+            tyhja.append(2)
+            siirrot2.append(tyhja)
+            tyhja2.append(4)
+            siirrot2.append(tyhja2)
+
+        return siirrot2
+
     def maksimointi(self, pelilauta, a, b, syvyys):
-        (maksimisiirto, maksimiarvo) = (None, -1) #pienempi arvo kuin mikään muu
-        if self.kokeileva_peli.peli_havitty == True:
-            print("Peli on päättynyt")
-            #katkaisu ja palautus
-        if self.kokeileva_peli.peli_loppu == True:
-            print("Peli on päättynyt")
-            #katkaisu ja palautus
+        """Pyrkii löytämään parhaimman suunnan pelilaudalla olevista neljästä
+        vaihtoehdosta.
+        """
 
-        for siirto in self.mahdolliset_siirrot(pelilauta):
-            self.kokeileva_peli.pelialusta = pelilauta
+        (maksimisiirto, maksimiarvo) = (None, -1)
+        mahdolliset_siirrot = self.mahdolliset_siirrot(pelilauta)
+
+        if syvyys == 0 or [mahdolliset_siirrot] == 0:
+            return (None, self.pelilaudan_arvo(pelilauta))
+
+        syvyys -= 1
+
+        for siirto in mahdolliset_siirrot:
+            self.kokeileva_peli.pelialusta = copy.deepcopy(pelilauta)
             self.kokeileva_peli.siirto(siirto)
+            (_, arvo) = self.minimointi(self.kokeileva_peli.pelialusta, a, b, syvyys)
 
-            #kutsutaan minimointia
             if arvo > maksimiarvo:
                 (maksimisiirto, maksimiarvo) = (siirto, arvo)
             if maksimiarvo >= b:
@@ -88,31 +109,31 @@ class Algoritmi:
         return (maksimisiirto, maksimiarvo)
 
     def minimointi(self, pelilauta, a, b, syvyys):
+        """Pyrkii löytämään ns. vastapelaajan parhaimman siirron eli käytännössä
+        mikä on huonoin numero eli 2 tai 4, joka voi pelilaudalle ilmestyä.
+        Katsoo kaikki vaihtoehdot pelilaudan vapaista paikoista läpi.
+        """
+
         (minimisiirto, minimiarvo) = (None, sys.maxsize)
-        if self.kokeileva_peli.peli_havitty == True:
-            print("Peli on päättynyt")
-            #katkaisu ja palautus
-        if self.kokeileva_peli.peli_loppu == True:
-            print("Peli on päättynyt")
-            #katkaisu ja palautus
+        mahdolliset_siirrot = self.min_siirrot(pelilauta)
 
-        for siirto in self.mahdolliset_siirrot(pelilauta):
-            self.kokeileva_peli.pelialusta = pelilauta
-            self.kokeileva_peli.siirto(siirto)
+        if syvyys == 0 or len(mahdolliset_siirrot) == 0:
+            return (None, self.pelilaudan_arvo(pelilauta))
 
-            #kutsutaan minimointia
+        syvyys -= 1
+
+        for siirto in mahdolliset_siirrot:
+            pelialusta = copy.deepcopy(pelilauta)
+            pelialusta[siirto[0]].pop(siirto[1])
+            pelialusta[siirto[0]].insert(siirto[1], siirto[2])
+
+            (_, arvo) = self.maksimointi(pelialusta, a, b, syvyys)
+
             if arvo < minimiarvo:
-                (minimisiirto, minimiarvo) = (siirto, arvo)
+                (minimisiirto, minimiarvo) = (pelialusta, arvo)
             if minimiarvo <= a:
                 break
             if minimiarvo < b:
                 b = minimiarvo
 
         return (minimisiirto, minimiarvo)
-
-    def siirrot():
-        pass#min tai max
-
-    def peli_lopussa():
-        #
-        pass

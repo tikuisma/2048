@@ -1,4 +1,5 @@
 import random
+import copy
 
 class Pelialusta:
     """Luokka, jonka avulla luodaan pelille alusta ja sen toiminnot.
@@ -19,10 +20,11 @@ class Pelialusta:
         self.peli_havitty = False
         self.peli_loppu = False
         self.pelialusta = []
-        for i in range(4):
+        for _ in range(4):
             self.pelialusta.append([0]*4)
 
         self.vapaat_paikat = []
+        self.summa = 0
 
     def ilmestyva_numero(self):
         """Pelin alkaessa pelialustalle tulee satunnaiseen kohtaan joko numero
@@ -30,18 +32,18 @@ class Pelialusta:
         vapaaseen kohtaan numero 2 tai 4.
         """
 
-        numerot = [2, 4]
+        numerot = [2, 4, 2, 2, 2, 2, 2, 2, 2, 2]
         numero = random.choice(numerot)
         self.numeron_asetus(numero)
 
-    def etsi_nollat(self):
+    def etsi_nollat(self, pelialusta):
         """Etsii pelilaudalta vapaat paikat eli nollien sijainnit.
         """
 
         self.vapaat_paikat = []
-        for i in range(len(self.pelialusta)):
-            for j in range(len(self.pelialusta[i])):
-                if self.pelialusta[i][j] == 0:
+        for i in range(len(pelialusta)):
+            for j in range(len(pelialusta[i])):
+                if pelialusta[i][j] == 0:
                     self.vapaat_paikat.append((i,j))
 
     def numeron_asetus(self, numero):
@@ -53,7 +55,7 @@ class Pelialusta:
             numero: Pelialustalle arvottu numero.
         """
 
-        self.etsi_nollat()
+        self.etsi_nollat(self.pelialusta)
         if len(self.vapaat_paikat) == 0:
             self.peli_havitty = True
         else:
@@ -69,25 +71,28 @@ class Pelialusta:
         Args:
             suunta: Käyttäjän antama syöte halutusta suunnasta pelialustalla.
         """
-
-        if suunta == "W" or suunta == "w":
-            self.kaanto(1)
-            self.poista_nollat()
-            self.yhdistyminen()
-            self.kaanto(3)
-        if suunta == "s" or suunta == "S":
-            self.kaanto(3)
-            self.poista_nollat()
-            self.yhdistyminen()
-            self.kaanto(1)
-        if suunta == "a" or suunta == "A":
-            self.poista_nollat()
-            self.yhdistyminen()
-        if suunta == "d" or suunta == "D":
-            self.kaanto(2)
-            self.poista_nollat()
-            self.yhdistyminen()
-            self.kaanto(2)
+        if suunta in ["W", "w"]:
+            pelialusta = self.kaanto(1, self.pelialusta)
+            pelialusta = self.poista_nollat(pelialusta)
+            pelialusta = self.yhdistyminen(pelialusta)
+            pelialusta = self.lisaa_nollat(pelialusta)
+            self.pelialusta = self.kaanto(3, pelialusta)
+        if suunta in ["s", "S"]:
+            pelialusta = self.kaanto(3, self.pelialusta)
+            pelialusta = self.poista_nollat(pelialusta)
+            pelialusta = self.yhdistyminen(pelialusta)
+            pelialusta = self.lisaa_nollat(pelialusta)
+            self.pelialusta = self.kaanto(1, pelialusta)
+        if suunta in ["a", "A"]:
+            pelialusta = self.poista_nollat(self.pelialusta)
+            pelialusta = self.yhdistyminen(pelialusta)
+            self.pelialusta = self.lisaa_nollat(pelialusta)
+        if suunta in ["d", "D"]:
+            pelialusta = self.kaanto(2, self.pelialusta)
+            pelialusta = self.poista_nollat(pelialusta)
+            pelialusta = self.yhdistyminen(pelialusta)
+            pelialusta = self.lisaa_nollat(pelialusta)
+            self.pelialusta = self.kaanto(2, pelialusta)
 
         self.peli_voitettu()
 
@@ -102,14 +107,15 @@ class Pelialusta:
         for i in range(len(ei_nollia)):
             while len(ei_nollia[i]) < 4:
                 ei_nollia[i].append(0)
-        self.pelialusta = ei_nollia
 
-    def yhdistyminen(self):
+        return ei_nollia
+
+    def yhdistyminen(self, pelialusta):
         """Siirron jälkeen katsotaan vierekkäiset numerot, jotta ne voitaisiin
         mahdollisesti yhdistää toisiinsa.
         """
 
-        ei_nollia = self.poista_nollat()
+        ei_nollia = self.poista_nollat(pelialusta)
         uusi_pelialusta = []
         for i in ei_nollia:
             if len(i) > 1:
@@ -135,9 +141,10 @@ class Pelialusta:
                 uusi_pelialusta.append(uusi_rivi)
             else:
                 uusi_pelialusta.append(i)
-        self.lisaa_nollat(uusi_pelialusta)
 
-    def poista_nollat(self):
+        return uusi_pelialusta
+
+    def poista_nollat(self, pelialusta):
         """Tarkistaa vapaat paikat pelialustalla eli nollien paikat, jonka
         jälkeen poistaa nämä.
 
@@ -145,14 +152,14 @@ class Pelialusta:
             ei_nollia: palauttaa pelialustan, josta on poistettu vapaat paikat.
         """
 
-        ei_nollia = self.pelialusta
-        self.etsi_nollat()
+        ei_nollia = pelialusta
+        self.etsi_nollat(ei_nollia)
         for i in range(len(self.vapaat_paikat)-1,-1,-1):
             ei_nollia[self.vapaat_paikat[i][0]].pop(self.vapaat_paikat[i][1])
 
         return ei_nollia
 
-    def kaanto(self, kierrokset):
+    def kaanto(self, kierrokset, pelialusta):
         """Jos käyttäjä on valinnut suunnaksi ylos, alas tai oikealle.
         Käännetään pelialustaa suunnan mukaisesti määrätyllä määrällä, jotta
         voidaan käyttää yhdistyminen-metodia yhdistämään pelialustalla
@@ -163,19 +170,25 @@ class Pelialusta:
             jonka listan tulee kääntyä, jotta numerot saadaan tasattua vasem-
             malle.
         """
+        uusi_pelialusta = copy.deepcopy(pelialusta)
 
-        for kierros in range(kierrokset):
+        for _ in range(kierrokset):
             tyhja = [[],[],[],[]]
             for i in range(4):
                 for j in range(3, -1, -1):
-                    tyhja[j].append(self.pelialusta[i][::-1][j])
-            self.pelialusta = tyhja
+                    tyhja[j].append(uusi_pelialusta[i][::-1][j])
+            uusi_pelialusta = tyhja
+
+        return uusi_pelialusta
 
     def peli_voitettu(self):
         max_arvo = 2048
+        self.summa = 0
         for i in self.pelialusta:
             if max(i) == max_arvo:
                 self.peli_loppu = True
+            for j in i:
+                self.summa += j
 
 
     def __str__(self) -> str:

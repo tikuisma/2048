@@ -1,5 +1,10 @@
+import sys
+import time
+import copy
 from peli import Pelialusta
-import algoritmi
+from algoritmi import Algoritmi
+
+
 
 def main():
     """Pääfunktio, josta kutsutaan pelialustan tekevää luokkaa ja sen metodeita.
@@ -13,6 +18,7 @@ def main():
     valinta = input("Jos haluat pelata itse, syötä X. Mikäli haluat katsoa,\n"
     "tekoälyn pelaamista, valitse Y.\n"
     "Syötä valintasi: ")
+
     if valinta == "X" or valinta == "x":
         peli = Pelialusta()
         peli.ilmestyva_numero()
@@ -35,9 +41,37 @@ def main():
             else:
                 print("Väärä komento")
     if valinta == "Y" or valinta == "y":
-        algoritmi
+        odotusaika = input("Anna odotusaika sekunteina:")
+        pelikierrosten_maara = input("Monta kierrosta pelataan? ")
+        voitot = 0
+        tulokset = []
+        for pelikierros in range(int(pelikierrosten_maara)):
+            minmax = Algoritmi()
+            pelilauta = Pelialusta()
+            pelilauta.ilmestyva_numero()
+            while not pelilauta.peli_loppu:
+                testialusta = copy.copy(pelilauta.pelialusta)
+                (siirto, arvo) = minmax.maksimointi(testialusta, -1, sys.maxsize, 5)
+                print("Peli ",pelikierros + 1, ", Siirto: ", siirto, ", Arvo: ", round(arvo))
+                if siirto is not None:
+                    pelilauta.siirto(siirto)
+                    pelilauta.ilmestyva_numero()
+                    print(pelilauta)
+                    time.sleep(float(odotusaika))
+                else:
+                    print(pelilauta)
+                    tulokset.append(pelilauta.summa)
+                    print("Peli päättyi, ei voittoa!")
+                    break
+            if pelilauta.peli_loppu:
+                voitot += 1
+
     else:
         print("Et valinnut kumpaakaan. Ole hyvä ja yritä uudelleen.")
+
+    print("Voitit ", voitot, "/", pelikierrosten_maara)
+    print("Tulokset: ", tulokset)
+
 
 if __name__ == "__main__":
     main()
