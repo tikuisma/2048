@@ -14,6 +14,7 @@ Koodin testauskattavuus Codecov:ssa: [![codecov](https://codecov.io/gh/tikuisma/
 
 ### Pelin pelaamista varten:
 - Kloonaa repo ensin omalle koneelle.
+- Asenna sitten repon riippuvuudet: ``poetry install``
 - Siirry sitten src-kansion sisälle ja aja komento: ``python3 main.py``, jolloin peli lähtee käyntiin.
 - Testit saa suoritettua siirtymällä ensin virtuaaliympäristöön: ``poetry shell``, jonka jälkeen aja komento: ``pytest src``.
 
