@@ -16,6 +16,6 @@ Koodin testauskattavuus Codecov:ssa: [![codecov](https://codecov.io/gh/tikuisma/
 - Kloonaa repo ensin omalle koneelle.
 - Asenna sitten repon riippuvuudet: ``poetry install``
 - Siirry sitten src-kansion sisälle ja aja komento: ``python3 main.py``, jolloin peli lähtee käyntiin.
-- Testit saa suoritettua siirtymällä ensin virtuaaliympäristöön: ``poetry shell``, jonka jälkeen aja komento: ``pytest src``.
+- Testit saa suoritettua siirtymällä ensin virtuaaliympäristöön: ``poetry shell``, jonka jälkeen aja komento: ``poetry run pytest``.
 
 2048-pelin tekeminen on osa Tietorakenteet ja algoritmit -harjoitustyötä Tietojenkäsittelytieteen aineopinnoissa Helsingin yliopistossa.

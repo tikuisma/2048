@@ -2,12 +2,10 @@
 
 ## Pelin tarkoitus
 
-2048-pelin tarkoituksena on liu’uttaa ilmestyviä palikoita niin, että saadaan palikassa olevaa lukumäärää kasvatettua. Peli on yksinpeli ja sen pelialustana toimii 4 x 4 oleva ruudukko. Peliin ilmestyy aina palikka satunnaisesti mihin tahansa tyhjään olevaan ruutuun jokaisen tehdyn siirron jälkeen. Palikassa om aina numero 2 tai 4. Pelissä siirrytään vetämällä palikoita joko vasemmalle, oikealle, ylös tai alas. Mikäli vierekkäiset numerot ovat samat, palikat yhdistyvät ja pistemäärä plussaantuu eli esimerkiksi 4 + 4 tulee yksi kuutiopalikka, jossa on luku 8. Mikäli pelaaja yrittää liikkua suuntaan, jossa pelilaudalla ei tapahtuisi mitään, pelaajan tulee tehdä siirto uudelleen. Pelaajan kerättyä kuutiopalikka, jossa on luku 2048, on päässyt pelin läpi ja peli päättyy.
+2048-pelin tarkoituksena on liu’uttaa ilmestyviä palikoita niin, että saadaan palikassa olevaa lukumäärää kasvatettua. Peli on yksinpeli ja sen pelialustana toimii 4 x 4 oleva ruudukko. Peliin ilmestyy aina palikka satunnaisesti mihin tahansa tyhjään olevaan ruutuun jokaisen tehdyn siirron jälkeen. Satunnainen palikka on numeroltaan joko 2 tai 4. Peliin ilmestyy 90 % todennäköisyydellä numero 2 ja 10 % todennäköisyydellä numero 4. Pelissä siirrytään vetämällä palikoita joko vasemmalle, oikealle, ylös tai alas. Mikäli vierekkäiset numerot ovat samat, palikat yhdistyvät ja pistemäärä plussaantuu eli esimerkiksi 4 + 4 tulee yksi kuutiopalikka, jossa on luku 8. Mikäli pelaaja yrittää liikkua suuntaan, jossa pelilaudalla ei tapahtuisi mitään, pelaajan tulee tehdä siirto uudelleen. Pelaajan kerättyä kuutiopalikka, jossa on luku 2048, on päässyt pelin läpi ja peli päättyy.
 
 ![image](https://user-images.githubusercontent.com/93583969/200129692-23c3b1ca-a204-416b-8e20-13d792ecab16.png)
 (Kuva: Statt 2014)
-
-Pelaajan siirtojen määrää seurataan pelin aikana. Mikäli pelaaja on pelannut pelin onnistuneesti läpi, pääsee pelaaja top 10 pelaajan joukkoon, mikäli se on tehnyt vähemmän siirtoja kuin listalla jo olevat pelaajat.
 
 Pelin tekeminen on osa tietojenkäsittelytieteen kandidaatin (TKT) opintoja.
 
@@ -24,7 +22,8 @@ Alussa valitaan pelaaja ja se on joko ihmispelaaja tai tekoäly. Valinnan jälke
 
 ### Pelin päätyttyä
 
-Mikäli peli on pelattu onnistuneesti läpi. Tarkastetaan pelaajan tekemien siirtojen määrä. Mikäli siirtojen määrä alittaa top 10 -listalla olevien pelaajien siirrot, saa pelaaja syöttää oman nimen/nimimerkin, jonka jälkeen nimi siirtyy listalle. Pelissä ei siis ole sisäänkirjautumista, vaan päästessään parhaiden joukkoon, pelaaja saa syöttää nimensä siinä kohtaa. Tekoälyn päästessä listalle, lisätään se automaattisesti ja merkitään tekoälyn tulokseksi.
+Mikäli peli on pelattu onnistuneesti läpi. Tarkastetaan pelaajan tekemien siirtojen määrä.
+Tekoälyn pelin jälkeen tulostetaan pelatut kierrokset ja näiden mahdolliset voitot.
 
 Ihmispelaajan sekä tekoälyn peli loppuu joko häviämiseen tai 2048 tulokseen. Peliä ei voi jatkaa, vaikka sen olisi onnistuneesti läpäissyt.
 
@@ -37,7 +36,7 @@ Projektin dokumentaatio, koodi ja kommentit tulevat olemaan suomen kielellä.
 
 ## Algoritmi ja tietorakenne
 
-Käytän pelin tekemiseen Minimax-algoritmia, jota tehostetaan Alpha beta karsinta -algoritmilla. Se siis karsii siirtovaihtoehtoja pois, jotta kaikkia eri skenaarioita ei tarvitse käydä läpi (Zadrozny 2018). Vaikka pelissä ei virallisesti ole kahta pelaajaa, voi peliä ajatella ns. kaksinpelinä (Lazar 2020). Siksi minimax-algoritmi sopii pelissä hyvin käytettäväksi. Pelaajan tavoitteenahan on maksimoida pisteensä pelissä ja satunnaisesti tulevia palikoita voidaan taas pitää ns. vihollisena, sillä sen voi ajatella yrittävän sijoittaa tulevia palikoita mahdollisimman huonoihin kohtiin oman pelin kannalta.  
+Käytän pelin tekemiseen Minimax-algoritmia, jota tehostetaan Alpha beta karsinta -algoritmilla. Se siis karsii siirtovaihtoehtoja pois, jotta kaikkia eri skenaarioita ei tarvitse käydä läpi (Zadrozny 2018). Vaikka pelissä ei virallisesti ole kahta pelaajaa, voi peliä ajatella ns. kaksinpelinä (Lazar 2020). Siksi MinMax-algoritmi sopii pelissä hyvin käytettäväksi. Pelaajan tavoitteenahan on maksimoida pisteensä pelissä ja satunnaisesti tulevia palikoita voidaan taas pitää ns. vihollisena, sillä sen voi ajatella yrittävän sijoittaa tulevia palikoita mahdollisimman huonoihin kohtiin oman pelin kannalta.  
 
 ### Aika- ja tilavaativuudet 
 

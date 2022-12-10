@@ -1,16 +1,18 @@
 import sys
 import time
 import copy
+from datetime import datetime
 from peli import Pelialusta
 from algoritmi import Algoritmi
-
-
 
 def main():
     """Pääfunktio, josta kutsutaan pelialustan tekevää luokkaa ja sen metodeita.
     Args:
         Pelialusta: kutsutaan luokkaa, joka luo pelialustan ja, joka sisältää
         pelin toiminnot.
+        Algoritmi: kutsutaan luokkaa, jossa on toteutettuna MinMax-algoritmi
+        alpha beta karsinnalla. Luokka laskee parhaimman mahdollisen siirron
+        pelissä ja pelaa tätä itse.
     """
 
     syotteet = ["a","A","w","W","d","D","s","S"]
@@ -40,9 +42,11 @@ def main():
                     print("Tähän suuntaan ei voi siirtää, kokeile toista suuntaa.")
             else:
                 print("Väärä komento")
+
     if valinta == "Y" or valinta == "y":
         odotusaika = input("Anna odotusaika sekunteina:")
         pelikierrosten_maara = input("Monta kierrosta pelataan? ")
+        aloitusaika = datetime.now()
         voitot = 0
         tulokset = []
         for pelikierros in range(int(pelikierrosten_maara)):
@@ -69,8 +73,10 @@ def main():
     else:
         print("Et valinnut kumpaakaan. Ole hyvä ja yritä uudelleen.")
 
-    print("Voitit ", voitot, "/", pelikierrosten_maara)
+    lopetusaika = datetime.now()
+    print("Voitit: ", voitot, "/", pelikierrosten_maara)
     print("Tulokset: ", tulokset)
+    print("Yhteensä aikaa kului: ", lopetusaika - aloitusaika)
 
 
 if __name__ == "__main__":

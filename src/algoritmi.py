@@ -1,4 +1,5 @@
-import sys, copy
+import sys
+import copy
 from peli import Pelialusta
 
 class Algoritmi:
@@ -81,7 +82,7 @@ class Algoritmi:
 
         return siirrot2
 
-    def maksimointi(self, pelilauta, a, b, syvyys):
+    def maksimointi(self, pelilauta, alpha, beta, syvyys):
         """Pyrkii löytämään parhaimman suunnan pelilaudalla olevista neljästä
         vaihtoehdosta.
         """
@@ -97,18 +98,18 @@ class Algoritmi:
         for siirto in mahdolliset_siirrot:
             self.kokeileva_peli.pelialusta = copy.deepcopy(pelilauta)
             self.kokeileva_peli.siirto(siirto)
-            (_, arvo) = self.minimointi(self.kokeileva_peli.pelialusta, a, b, syvyys)
+            (_, arvo) = self.minimointi(self.kokeileva_peli.pelialusta, alpha, beta, syvyys)
 
             if arvo > maksimiarvo:
                 (maksimisiirto, maksimiarvo) = (siirto, arvo)
-            if maksimiarvo >= b:
+            if maksimiarvo >= beta:
                 break
-            if maksimiarvo > a:
-                a = maksimiarvo
+            if maksimiarvo > alpha:
+                alpha = maksimiarvo
 
         return (maksimisiirto, maksimiarvo)
 
-    def minimointi(self, pelilauta, a, b, syvyys):
+    def minimointi(self, pelilauta, alpha, beta, syvyys):
         """Pyrkii löytämään ns. vastapelaajan parhaimman siirron eli käytännössä
         mikä on huonoin numero eli 2 tai 4, joka voi pelilaudalle ilmestyä.
         Katsoo kaikki vaihtoehdot pelilaudan vapaista paikoista läpi.
@@ -127,13 +128,13 @@ class Algoritmi:
             pelialusta[siirto[0]].pop(siirto[1])
             pelialusta[siirto[0]].insert(siirto[1], siirto[2])
 
-            (_, arvo) = self.maksimointi(pelialusta, a, b, syvyys)
+            (_, arvo) = self.maksimointi(pelialusta, alpha, beta, syvyys)
 
             if arvo < minimiarvo:
                 (minimisiirto, minimiarvo) = (pelialusta, arvo)
-            if minimiarvo <= a:
+            if minimiarvo <= alpha:
                 break
-            if minimiarvo < b:
-                b = minimiarvo
+            if minimiarvo < beta:
+                beta = minimiarvo
 
         return (minimisiirto, minimiarvo)
