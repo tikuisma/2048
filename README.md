@@ -6,7 +6,7 @@
 - [Viikkoraportti 3](https://github.com/tikuisma/2048/blob/master/dokumentaatio/viikkoraportti_3.md)
 - [Viikkoraportti 4](https://github.com/tikuisma/2048/blob/master/dokumentaatio/viikkoraportti_4.md)
 - [Viikkoraportti 5](https://github.com/tikuisma/2048/blob/master/dokumentaatio/viikkoraportti_5.md)
-- [Viikkoraportti 6]()
+- [Viikkoraportti 6](https://github.com/tikuisma/2048/blob/master/dokumentaatio/viikkoraportti_6.md)
 
 ## Pelin käyttöohje ja dokumentaatio
 - [Pelin käyttöohje](https://github.com/tikuisma/2048/blob/master/dokumentaatio/k%C3%A4ytt%C3%B6ohje.md)
