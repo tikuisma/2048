@@ -1,21 +1,20 @@
 # 2048-peli
 
+- [Pelin käyttöohje](https://github.com/tikuisma/2048/blob/master/dokumentaatio/k%C3%A4ytt%C3%B6ohje.md)
+
 - [Viikkoraportti 1](https://github.com/tikuisma/2048/blob/master/dokumentaatio/viikkoraportti_1.md)
 - [Viikkoraportti 2](https://github.com/tikuisma/2048/blob/master/dokumentaatio/viikkoraportti_2.md)
 - [Viikkoraportti 3](https://github.com/tikuisma/2048/blob/master/dokumentaatio/viikkoraportti_3.md)
 - [Viikkoraportti 4](https://github.com/tikuisma/2048/blob/master/dokumentaatio/viikkoraportti_4.md)
 - [Viikkoraportti 5](https://github.com/tikuisma/2048/blob/master/dokumentaatio/viikkoraportti_5.md)
+- [Viikkoraportti 6]()
 
-Koodin Pylint-pisteytys tällä hetkellä 9.35/10
+- [Vaatimusmäärittely](https://github.com/tikuisma/2048/blob/master/dokumentaatio/vaatimusmaarittely.md)
+- [Toteutusdokumentti](https://github.com/tikuisma/2048/blob/master/dokumentaatio/toteutusdokumentti.md)
+- [Testausdokumentti](https://github.com/tikuisma/2048/blob/master/dokumentaatio/testausdokumentti.md)
 
 Koodin tila: ![GHA workflow badge](https://github.com/tikuisma/2048/workflows/CI/badge.svg)
 
 Koodin testauskattavuus Codecov:ssa: [![codecov](https://codecov.io/gh/tikuisma/2048/branch/master/graph/badge.svg?token=82IQ3KECIQ)](https://codecov.io/gh/tikuisma/2048)
-
-### Pelin pelaamista varten:
-- Kloonaa repo ensin omalle koneelle.
-- Asenna sitten repon riippuvuudet: ``poetry install``
-- Siirry sitten src-kansion sisälle ja aja komento: ``python3 main.py``, jolloin peli lähtee käyntiin.
-- Testit saa suoritettua siirtymällä ensin virtuaaliympäristöön: ``poetry shell``, jonka jälkeen aja komento: ``poetry run pytest``.
 
 2048-pelin tekeminen on osa Tietorakenteet ja algoritmit -harjoitustyötä Tietojenkäsittelytieteen aineopinnoissa Helsingin yliopistossa.
