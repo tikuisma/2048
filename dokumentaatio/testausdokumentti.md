@@ -1,5 +1,5 @@
 # Testausdokumentti
-Ohjelmaa on testattu automatisoiduilla unittest-testeillä sekä manuaalisesti tekstikäyttöliittymässä. Pelin algoritmin testaaminen on hankalaa, koska peli on hyvin satunnainen ja mahdollisia tapahtumaketjuja on todella paljon. Pelissä on mukana muun muassa satunnaisuutta, jonka takia on myös hankalaa määrittää algoritmilla pelatessa, että mikä on juuri oikea siirto pelialustalla. Pelissä ei myöskään ole niin selvää "oikeaa" ja "väärää" siirtoa, joten tämä ei ole niin yksiselitteistä.
+Ohjelmaa on testattu automatisoiduilla unittest-testeillä sekä manuaalisesti tekstikäyttöliittymässä. Pelin algoritmin testaaminen on hankalaa, koska peli on hyvin satunnainen ja mahdollisia tapahtumaketjuja on todella paljon. Satunnaisuus tuo mukanaan sen, että on hankalaa määrittää algoritmilla pelatessa, että mikä on juuri oikea siirto pelialustalla. Pelissä ei myöskään ole niin selvää "oikeaa" ja "väärää" siirtoa, joten tämä ei ole niin yksiselitteistä.
 
 ## Yksikkö- ja integraatiotestaus
 ### Repositorio-luokat
