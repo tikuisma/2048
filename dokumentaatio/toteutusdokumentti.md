@@ -28,11 +28,9 @@ Tässä aiheessa suorituskykytestausta ei vaadittu.
 
 ## Työn mahdolliset puutteet ja parannusehdotukset
 Olisihan peli paremman näköinen mikäli se olisi toteutettu graafisena käyttöliittymänä. Tosin tässä pelissä myös tekstikäyttöliittymä on mielestäni tarpeeksi, koska pelataan vain numeroin ja siirrot tapahtuvat wasd-näppäimistä.
-Pelissä olevan satunnaisuuden vuoksi testaus on erittäin hankalaa, tätä yritetty kuitenkin monipuolistaa toteuttamalla erilaisia pelialustoja.
+Pelin luonteen vuoksi testaus on hankalaa, mutta tätä yritetty kuitenkin monipuolistaa toteuttamalla erilaisia pelialustoja.
 
 ## Lähteet
-
-
 
 Temple University. 2003. Lecture 7. Luettu: 9.12.2022. https://cis.temple.edu/~vasilis/Courses/CIS603/Lectures/l7.html.
 

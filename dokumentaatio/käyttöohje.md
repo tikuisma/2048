@@ -7,10 +7,10 @@ Tekoälyn pelatessa voit valita pelikierrosten lukumäärän sekä odotusajan se
 
 Siirtymiset pelialustalla:
 
-W / w = Siirto ylös
-S / s = Siirto alas
-A / a = Siirto vasemmalle
-D / d = Siirto oikealle
+- W / w = Siirto ylös
+- S / s = Siirto alas
+- A / a = Siirto vasemmalle
+- D / d = Siirto oikealle
 
 Katso tarkemmin pelistä [vaatimusmäärittelystä](https://github.com/tikuisma/2048/blob/master/dokumentaatio/vaatimusmaarittely.md).
 
@@ -24,4 +24,4 @@ Testit saa suoritettua siirtymällä ensin virtuaaliympäristöön: ``poetry she
 
 ### Koodin laadun seuranta
 Koodin laatua voi seurata ajamalla komennon: ``pylint src``.
-Koodin laatupisteytys 10.12.: 9.44 / 10
+Koodin laatupisteytys 21.12.: 9.44 / 10

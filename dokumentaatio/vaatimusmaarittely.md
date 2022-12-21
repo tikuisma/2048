@@ -7,7 +7,7 @@
 ![image](https://user-images.githubusercontent.com/93583969/200129692-23c3b1ca-a204-416b-8e20-13d792ecab16.png)
 (Kuva: Statt 2014)
 
-Pelin tekeminen on osa tietojenkäsittelytieteen kandidaatin (TKT) opintoja.
+Pelin tekeminen on osa Tietojenkäsittelytieteen kandidaatin (TKT) opintoja.
 
 ## Käyttöliittymä
 
@@ -36,11 +36,11 @@ Projektin dokumentaatio, koodi ja kommentit tulevat olemaan suomen kielellä.
 
 ## Algoritmi ja tietorakenne
 
-Käytän pelin tekemiseen Minimax-algoritmia, jota tehostetaan Alpha beta karsinta -algoritmilla. Se siis karsii siirtovaihtoehtoja pois, jotta kaikkia eri skenaarioita ei tarvitse käydä läpi (Zadrozny 2018). Vaikka pelissä ei virallisesti ole kahta pelaajaa, voi peliä ajatella ns. kaksinpelinä (Lazar 2020). Siksi MinMax-algoritmi sopii pelissä hyvin käytettäväksi. Pelaajan tavoitteenahan on maksimoida pisteensä pelissä ja satunnaisesti tulevia palikoita voidaan taas pitää ns. vihollisena, sillä sen voi ajatella yrittävän sijoittaa tulevia palikoita mahdollisimman huonoihin kohtiin oman pelin kannalta.  
+Käytän pelin tekemiseen Minimax-algoritmia, jota tehostetaan Alpha beta karsinta -algoritmilla. Se siis karsii siirtovaihtoehtoja pois, jotta kaikkia eri skenaarioita ei tarvitse käydä läpi (Zadrozny 2018). Vaikka pelissä ei virallisesti ole kahta pelaajaa, voi peliä ajatella ns. kaksinpelinä (Lazar 2020). Siksi MinMax-algoritmi sopii pelissä hyvin käytettäväksi. Pelaajan tavoitteenahan on maksimoida pisteensä pelissä ja satunnaisesti tulevia palikoita voidaan taas pitää ns. vihollisena, sillä sen voi ajatella yrittävän sijoittaa tulevia palikoita mahdollisimman huonoihin kohtiin oman pelin kannalta. Pelin algoritmiin on vielä lisätty painotettu pelialusta eli tekoälyn pelatessa pelin arvot painottuisivat vasempaan ylänurkkaan. Tehostaminen saadaan aikaan, kun verrataan vierekkäisiä numeroita ja pyritään valitsemaan pienin mahdollinen erotus sekä saadut arvot jaetaan vielä täysien ruutujen määrällä, jotta painotus kohdistuisi tyhjiin eli vapaisiin paikkoihin.
 
-### Aika- ja tilavaativuudet 
+### Aikavaativuus
 
-Täydentyy projektin edetessä.
+Algoritmia yritetty tehostaa painotetulla pelilaudalla.
 
 ## Lähteet
 
