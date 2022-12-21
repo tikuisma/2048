@@ -73,15 +73,15 @@ class Algoritmi:
         for y in range(4):
             for x in range(4):
                 summa += pelilauta[y][x] * pelilaudan_painotus[y][x]
-        
+
         rivi_erotus = 0
         for rivi in pelilauta:
             rivi_erotus += rivi[0] - rivi[1] + rivi[1] - rivi[2] + rivi[2] - rivi[3]
-        
+
         sarake_erotus = 0
         for i in range(4):
-            sarake_erotus += pelilauta[0][i] - pelilauta[1][i] + pelilauta[1][i]
-            - pelilauta[2][i] + pelilauta[2][i] - pelilauta[3][i]
+            sarake_erotus += (pelilauta[0][i] - pelilauta[1][i] + pelilauta[1][i]
+            -pelilauta[2][i] + pelilauta[2][i] - pelilauta[3][i])
 
         #for rivi in pelilauta:
             #for numero in rivi:

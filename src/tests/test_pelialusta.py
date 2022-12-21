@@ -74,3 +74,8 @@ class TestPelialusta(unittest.TestCase):
 
         self.alusta.pelialusta = [[0, 0, 0, 0], [2, 4, 2, 4], [0, 0, 0, 0], [0, 0, 0, 0]]
         self.assertEqual(self.alusta.yhdistyminen(self.alusta.pelialusta), [[], [2, 4, 2, 4], [], []])
+    
+    def test_peli_voitettu(self):
+        self.alusta.pelialusta = [[0, 0, 0, 2048], [2, 2, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]]
+        self.alusta.peli_voitettu()
+        self.assertEqual(self.alusta.peli_loppu, True)

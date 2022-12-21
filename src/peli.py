@@ -71,6 +71,7 @@ class Pelialusta:
         Args:
             suunta: Käyttäjän antama syöte halutusta suunnasta pelialustalla.
         """
+
         if suunta in ["W", "w"]:
             pelialusta = self.kaanto(1, self.pelialusta)
             pelialusta = self.poista_nollat(pelialusta)
@@ -170,6 +171,7 @@ class Pelialusta:
             jonka listan tulee kääntyä, jotta numerot saadaan tasattua vasem-
             malle.
         """
+
         uusi_pelialusta = copy.deepcopy(pelialusta)
 
         for _ in range(kierrokset):
@@ -189,7 +191,6 @@ class Pelialusta:
                 self.peli_loppu = True
             for j in i:
                 self.summa += j
-
 
     def __str__(self) -> str:
         """Tulostaa tekstikäyttöliittymässä näkyvän pelialustan.

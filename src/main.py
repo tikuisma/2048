@@ -15,7 +15,7 @@ def main():
         pelissä ja pelaa tätä itse.
     """
 
-    syotteet = ["a","A","w","W","d","D","s","S"]
+    syotteet = ["a","w","d","s"]
 
     valinta = input("Jos haluat pelata itse, syötä X. Mikäli haluat katsoa,\n"
     "tekoälyn pelaamista, valitse Y.\n"
@@ -32,7 +32,7 @@ def main():
         print(peli)
         while peli.peli_havitty is False and peli.peli_loppu is False:
             syote = input("Anna suunta: ")
-            if syote in syotteet:
+            if syote.lower() in syotteet:
                 ennen = str(peli.pelialusta)
                 peli.siirto(syote)
                 if ennen != str(peli.pelialusta):
@@ -44,7 +44,7 @@ def main():
                 print("Väärä komento")
 
     if valinta.lower() == "y":
-        odotusaika = input("Anna odotusaika sekunteina:")
+        odotusaika = input("Anna odotusaika sekunteina: ")
         pelikierrosten_maara = input("Monta kierrosta pelataan? ")
         aloitusaika = datetime.now()
         voitot = 0
