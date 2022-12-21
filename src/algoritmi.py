@@ -56,38 +56,31 @@ class Algoritmi:
         numeron vasempaan ylänurkkaan sekä maksimoimaan tyhjien ruutujen määrän.
         """
 
-        #pelilaudan_painotus = [[4**15, 4**14, 4**13, 4**12],
-                            # [4**8, 4**9, 4**10, 4**11],
-                            #[4**7, 4**6, 4**5, 4**4],
-                            # [4**0, 4**1, 4**2, 4**3]]
-
         pelilaudan_painotus = [
         [4**10, 4**9, 4**8, 4**7],
         [4**9, 4**8, 4**7, 4**6],
         [4**8, 4**7, 4**6, 4**5],
         [4**6, 4**5, 4**4, 4**3]
         ]
-
+        painotettu = [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]]
         self.kokeileva_peli.pelialusta = pelilauta
         summa = 0
         for y in range(4):
             for x in range(4):
-                summa += pelilauta[y][x] * pelilaudan_painotus[y][x]
+                tulos = pelilauta[y][x] * pelilaudan_painotus[y][x]
+                summa += tulos
+                painotettu[y][x] = tulos
 
         rivi_erotus = 0
-        for rivi in pelilauta:
-            rivi_erotus += rivi[0] - rivi[1] + rivi[1] - rivi[2] + rivi[2] - rivi[3]
+        for rivi in painotettu:
+            rivi_erotus += (rivi[0] - rivi[1]) * 0.6 + rivi[1] - rivi[2] + rivi[2] - rivi[3]
 
         sarake_erotus = 0
         for i in range(4):
-            sarake_erotus += (pelilauta[0][i] - pelilauta[1][i] + pelilauta[1][i]
-            -pelilauta[2][i] + pelilauta[2][i] - pelilauta[3][i])
+            sarake_erotus += ((painotettu[0][i] - painotettu[1][i]) * 0.5 + painotettu[1][i]
+            -painotettu[2][i] + painotettu[2][i] - painotettu[3][i])
 
-        #for rivi in pelilauta:
-            #for numero in rivi:
-                #summa += numero
-
-        arvo = summa - (1 + rivi_erotus + sarake_erotus)**5
+        arvo = summa - (rivi_erotus * 0.5 + sarake_erotus * 0.4)
 
         self.kokeileva_peli.etsi_nollat(pelilauta)
         arvo = arvo / (16 - len(self.kokeileva_peli.vapaat_paikat))

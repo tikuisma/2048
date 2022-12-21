@@ -44,8 +44,13 @@ def main():
                 print("Väärä komento")
 
     if valinta.lower() == "y":
-        odotusaika = input("Anna odotusaika sekunteina: ")
-        pelikierrosten_maara = input("Monta kierrosta pelataan? ")
+        while True:
+            try:
+                odotusaika = int(input("Anna odotusaika sekunteina: "))
+                pelikierrosten_maara = int(input("Monta kierrosta pelataan? "))
+                break
+            except:
+                print("Virheellinen syöte")
         aloitusaika = datetime.now()
         voitot = 0
         tulokset = []
@@ -63,7 +68,6 @@ def main():
                     print(pelilauta)
                     time.sleep(float(odotusaika))
                 else:
-                    print(pelilauta)
                     tulokset.append(pelilauta.summa)
                     print("Peli päättyi, ei voittoa!")
                     break
