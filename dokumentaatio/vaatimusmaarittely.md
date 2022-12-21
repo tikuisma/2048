@@ -38,9 +38,9 @@ Projektin dokumentaatio, koodi ja kommentit tulevat olemaan suomen kielellä.
 
 Käytän pelin tekemiseen Minimax-algoritmia, jota tehostetaan Alpha beta karsinta -algoritmilla. Se siis karsii siirtovaihtoehtoja pois, jotta kaikkia eri skenaarioita ei tarvitse käydä läpi (Zadrozny 2018). Vaikka pelissä ei virallisesti ole kahta pelaajaa, voi peliä ajatella ns. kaksinpelinä (Lazar 2020). Siksi MinMax-algoritmi sopii pelissä hyvin käytettäväksi. Pelaajan tavoitteenahan on maksimoida pisteensä pelissä ja satunnaisesti tulevia palikoita voidaan taas pitää ns. vihollisena, sillä sen voi ajatella yrittävän sijoittaa tulevia palikoita mahdollisimman huonoihin kohtiin oman pelin kannalta. Pelin algoritmiin on vielä lisätty painotettu pelialusta eli tekoälyn pelatessa pelin arvot painottuisivat vasempaan ylänurkkaan. Tehostaminen saadaan aikaan, kun verrataan vierekkäisiä numeroita ja pyritään valitsemaan pienin mahdollinen erotus sekä saadut arvot jaetaan vielä täysien ruutujen määrällä, jotta painotus kohdistuisi tyhjiin eli vapaisiin paikkoihin.
 
-### Aikavaativuus
+### Aikavaativuus ja tilavaativuus
 
-Algoritmia yritetty tehostaa painotetulla pelilaudalla.
+Algoritmia yritetty tehostaa painotetulla pelilaudalla. Pelin algoritmissa on toteutettu algoritmin pelialustalle oma deepcopy monessa kohtaa, sillä tarvitaan linkittämätön kopio ns. vanhasta pelialustasta, jotta sitä voidaan verrata ns. uuteen.
 
 ## Lähteet
 
