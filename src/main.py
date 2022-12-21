@@ -21,7 +21,7 @@ def main():
     "tekoälyn pelaamista, valitse Y.\n"
     "Syötä valintasi: ")
 
-    if valinta == "X" or valinta == "x":
+    if valinta.lower() == "x":
         peli = Pelialusta()
         peli.ilmestyva_numero()
         print("Voit liikkua pelialustalla seuraavilla näppäimillä:")
@@ -43,7 +43,7 @@ def main():
             else:
                 print("Väärä komento")
 
-    if valinta == "Y" or valinta == "y":
+    if valinta.lower() == "y":
         odotusaika = input("Anna odotusaika sekunteina:")
         pelikierrosten_maara = input("Monta kierrosta pelataan? ")
         aloitusaika = datetime.now()
@@ -55,7 +55,7 @@ def main():
             pelilauta.ilmestyva_numero()
             while not pelilauta.peli_loppu:
                 testialusta = copy.copy(pelilauta.pelialusta)
-                (siirto, arvo) = minmax.maksimointi(testialusta, -1, sys.maxsize, 5)
+                (siirto, arvo) = minmax.maksimointi(testialusta, -(sys.maxsize), sys.maxsize, 5)
                 print("Peli ",pelikierros + 1, ", Siirto: ", siirto, ", Arvo: ", round(arvo))
                 if siirto is not None:
                     pelilauta.siirto(siirto)
@@ -68,6 +68,8 @@ def main():
                     print("Peli päättyi, ei voittoa!")
                     break
             if pelilauta.peli_loppu:
+                print("VOITIT !")
+                tulokset.append(pelilauta.summa)
                 voitot += 1
 
     else:

@@ -50,18 +50,47 @@ class Algoritmi:
         return siirrot
 
     def pelilaudan_arvo(self, pelilauta):
-        """Hyötyfunktio minmax-algoritmille, joka laskee arvon sen hetkiselle
+        """Hyötyfunktio Minmax-algoritmille, joka laskee arvon sen hetkiselle
         pelilaudalle.
+        Minimoi erotukset ja pyrkii siirtämään pelilaudalla olevan isoimman
+        numeron vasempaan ylänurkkaan sekä maksimoimaan tyhjien ruutujen määrän.
         """
+
+        #pelilaudan_painotus = [[4**15, 4**14, 4**13, 4**12],
+                            # [4**8, 4**9, 4**10, 4**11],
+                            #[4**7, 4**6, 4**5, 4**4],
+                            # [4**0, 4**1, 4**2, 4**3]]
+
+        pelilaudan_painotus = [
+        [4**10, 4**9, 4**8, 4**7],
+        [4**9, 4**8, 4**7, 4**6],
+        [4**8, 4**7, 4**6, 4**5],
+        [4**6, 4**5, 4**4, 4**3]
+        ]
 
         self.kokeileva_peli.pelialusta = pelilauta
         summa = 0
+        for y in range(4):
+            for x in range(4):
+                summa += pelilauta[y][x] * pelilaudan_painotus[y][x]
+        
+        rivi_erotus = 0
         for rivi in pelilauta:
-            for numero in rivi:
-                summa += numero
+            rivi_erotus += rivi[0] - rivi[1] + rivi[1] - rivi[2] + rivi[2] - rivi[3]
+        
+        sarake_erotus = 0
+        for i in range(4):
+            sarake_erotus += pelilauta[0][i] - pelilauta[1][i] + pelilauta[1][i]
+            - pelilauta[2][i] + pelilauta[2][i] - pelilauta[3][i]
+
+        #for rivi in pelilauta:
+            #for numero in rivi:
+                #summa += numero
+
+        arvo = summa - (1 + rivi_erotus + sarake_erotus)**5
 
         self.kokeileva_peli.etsi_nollat(pelilauta)
-        arvo = summa / (16 - len(self.kokeileva_peli.vapaat_paikat))
+        arvo = arvo / (16 - len(self.kokeileva_peli.vapaat_paikat))
 
         return arvo
 
@@ -90,7 +119,7 @@ class Algoritmi:
         (maksimisiirto, maksimiarvo) = (None, -1)
         mahdolliset_siirrot = self.mahdolliset_siirrot(pelilauta)
 
-        if syvyys == 0 or [mahdolliset_siirrot] == 0:
+        if syvyys == 0 or len(mahdolliset_siirrot) == 0:
             return (None, self.pelilaudan_arvo(pelilauta))
 
         syvyys -= 1
@@ -131,7 +160,7 @@ class Algoritmi:
             (_, arvo) = self.maksimointi(pelialusta, alpha, beta, syvyys)
 
             if arvo < minimiarvo:
-                (minimisiirto, minimiarvo) = (pelialusta, arvo)
+                (minimisiirto, minimiarvo) = (siirto, arvo)
             if minimiarvo <= alpha:
                 break
             if minimiarvo < beta:
