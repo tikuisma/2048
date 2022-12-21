@@ -9,7 +9,7 @@ Repositorio-luokkaa ``Algoritmi`` testataan antamalla erilaisia pelialustoja eli
 
 ### Testauskattavuus
 Testauskattavuus on seuraavanlainen:
-file:///home/tikuisma/Pictures/Screenshots/Screenshot%20from%202022-12-21%2020-02-59.png
+![Screenshot from 2022-12-21 20-02-59](https://user-images.githubusercontent.com/93583969/208976522-d4eed046-ed9f-48f8-81d5-6036f5f41844.png)
 Testauskattavuutta pystyy tarkistelemaan paremmin ajettua testit ja katsomalla ne htmlcov:n ``index.html``-tiedostosta.
 Testauskattavuusraportin voit katsoa täältä: [Codecov](https://app.codecov.io/gh/tikuisma/2048).
 
