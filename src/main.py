@@ -60,7 +60,7 @@ def main():
             pelilauta.ilmestyva_numero()
             while not pelilauta.peli_loppu:
                 testialusta = copy.copy(pelilauta.pelialusta)
-                (siirto, arvo) = minmax.maksimointi(testialusta, -(sys.maxsize), sys.maxsize, 5)
+                (siirto, arvo) = minmax.maksimointi(testialusta, -(sys.maxsize * 2), sys.maxsize * 2, 5)
                 print("Peli ",pelikierros + 1, ", Siirto: ", siirto, ", Arvo: ", round(arvo))
                 if siirto is not None:
                     pelilauta.siirto(siirto)

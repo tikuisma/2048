@@ -49,12 +49,14 @@ class Algoritmi:
 
         return siirrot
 
-    def pelilaudan_arvo(self, pelilauta):
+    def pelilaudan_arvo(self, pelilauta, syvyys):
         """Hyötyfunktio Minmax-algoritmille, joka laskee arvon sen hetkiselle
         pelilaudalle.
         Minimoi erotukset ja pyrkii siirtämään pelilaudalla olevan isoimman
         numeron vasempaan ylänurkkaan sekä maksimoimaan tyhjien ruutujen määrän.
         """
+
+        voitto = False
 
         pelilaudan_painotus = [
         [4**10, 4**9, 4**8, 4**7],
@@ -70,6 +72,8 @@ class Algoritmi:
                 tulos = pelilauta[y][x] * pelilaudan_painotus[y][x]
                 summa += tulos
                 painotettu[y][x] = tulos
+                if pelilauta[y][x] == 2048:
+                    voitto = True
 
         rivi_erotus = 0
         for rivi in painotettu:
@@ -85,7 +89,10 @@ class Algoritmi:
         self.kokeileva_peli.etsi_nollat(pelilauta)
         arvo = arvo / (16 - len(self.kokeileva_peli.vapaat_paikat))
 
-        return arvo
+        if voitto:
+            arvo = sys.maxsize
+
+        return arvo + syvyys
 
     def min_siirrot(self, pelilauta):
         """Metodi katsoo ns. vastapelaajan Min:n siirrot.
@@ -109,11 +116,11 @@ class Algoritmi:
         vaihtoehdosta.
         """
 
-        (maksimisiirto, maksimiarvo) = (None, -1)
+        (maksimisiirto, maksimiarvo) = (None, -(sys.maxsize * 2))
         mahdolliset_siirrot = self.mahdolliset_siirrot(pelilauta)
 
         if syvyys == 0 or len(mahdolliset_siirrot) == 0:
-            return (None, self.pelilaudan_arvo(pelilauta))
+            return (None, self.pelilaudan_arvo(pelilauta, syvyys))
 
         syvyys -= 1
 
@@ -137,11 +144,11 @@ class Algoritmi:
         Katsoo kaikki vaihtoehdot pelilaudan vapaista paikoista läpi.
         """
 
-        (minimisiirto, minimiarvo) = (None, sys.maxsize)
+        (minimisiirto, minimiarvo) = (None, sys.maxsize * 2)
         mahdolliset_siirrot = self.min_siirrot(pelilauta)
 
         if syvyys == 0 or len(mahdolliset_siirrot) == 0:
-            return (None, self.pelilaudan_arvo(pelilauta))
+            return (None, self.pelilaudan_arvo(pelilauta, syvyys))
 
         syvyys -= 1
 
