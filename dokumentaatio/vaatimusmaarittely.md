@@ -11,7 +11,7 @@ Pelin tekeminen on osa Tietojenkäsittelytieteen kandidaatin (TKT) opintoja.
 
 ## Käyttöliittymä
 
-Pelin käyttöliittymän tyyppi tulee olemaan tekstipohjainen.
+Pelin käyttöliittymä on tekstipohjainen.
 
 
 ## Sovelluksen toiminnallisuus
@@ -22,8 +22,8 @@ Alussa valitaan pelaaja ja se on joko ihmispelaaja tai tekoäly. Valinnan jälke
 
 ### Pelin päätyttyä
 
-Mikäli peli on pelattu onnistuneesti läpi. Tarkastetaan pelaajan tekemien siirtojen määrä.
-Tekoälyn pelin jälkeen tulostetaan pelatut kierrokset ja näiden mahdolliset voitot.
+Mikäli peli on pelattu onnistuneesti eli voitettu, tästä ilmoitetaan käyttäjälle.
+Tekoälyn pelin jälkeen tulostetaan pelatut kierrokset ja näiden pelien mahdolliset voitot.
 
 Ihmispelaajan sekä tekoälyn peli loppuu joko häviämiseen tai 2048 tulokseen. Peliä ei voi jatkaa, vaikka sen olisi onnistuneesti läpäissyt.
 
