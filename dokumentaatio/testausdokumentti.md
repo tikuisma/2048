@@ -12,7 +12,7 @@ Testauskattavuus on seuraavanlainen:
 ![Screenshot from 2022-12-21 20-02-59](https://user-images.githubusercontent.com/93583969/208976522-d4eed046-ed9f-48f8-81d5-6036f5f41844.png)
 
 Testauskattavuutta pystyy tarkistelemaan paremmin ajettua testit ja katsomalla ne htmlcov:n ``index.html``-tiedostosta.
-Testauskattavuusraportin voit myös katsoa täältä: [Codecov](https://app.codecov.io/gh/tikuisma/2048). (Minulla on ollut ongelmia Codecovin päivityksen kanssa, joten palvelu ei välttämättä ole ajan tasalla.)
+Testauskattavuusraportin voit myös katsoa täältä: [Codecov](https://app.codecov.io/gh/tikuisma/2048).
 
 ## Järjestelmätestaus
 Pelin käynnistystiedostoa ``main.py`` on hankala testata unittestein, sillä se on ns. pelin käyttöliittymä. Siksi käynnistystiedosto onkin testattu manuaalisesti tekstikäyttöliittymässä. Testattu muun muassa virheelliset syötteiden annot ja pelin siirtojen toimivuus. Mikäli pelissä yritetään siirtyä suuntaan, jossa mikään ei siirtyisi, tämä ei ole mahdollista vaan käyttäjälle ilmoitetaan, että suunta ei ole ok. Algoritmin pelausta seurattu ja varmistettu, että pelin voitettaessa annetaan oikeat tulokset ja peli päättyy. Pelin voittomahdollisuus on algoritmilla ajettuna noin 1/10 pelistä, tätä on testattu ajamalla useampi testi kerrallaan.
