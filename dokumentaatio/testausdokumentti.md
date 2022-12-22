@@ -3,7 +3,7 @@ Ohjelmaa on testattu automatisoiduilla unittest-testeillä sekä manuaalisesti t
 
 ## Yksikkö- ja integraatiotestaus
 ### Repositorio-luokat
-Repositorio-luokkaa ``Pelialusta`` testataan antamalla sille oma generoitu pelialusta ja tällä testataan luokan metodeita. Pelin eri toimivuuksia pyritty testaamaan mahdollisimman kattavasti erilaisilla pelialustoilla. Tarkistetaan, että palautetut arvot ovat halutunlaiset ja oikeat. Myös mahdollisuus pelin voitto -metodia on testattu täällä.
+Repositorio-luokkaa ``Pelialusta`` testataan antamalla sille oma generoitu pelialusta ja tällä testataan luokan metodeita. Pelin eri toimivuuksia pyritty testaamaan mahdollisimman kattavasti erilaisilla pelialustoilla. Tarkistetaan, että palautetut arvot ovat halutunlaiset ja oikeat.
 
 Repositorio-luokkaa ``Algoritmi`` testataan antamalla erilaisia pelialustoja eli näissä on lukuja, jotta voidaan tarkistaa onko metodien palauttama arvo oikea. Pyritty testaamaan MinMax-algoritmia mahdollisimman kattavasti antamalla erilaisia pelialustoja ja tekemällä näihin siirtoja sekä pelin satunnaisuuden vuoksi on itse määritelty mikä numero (2, 4) ilmestyy mahdollisimman huonoimpaan paikkaan.
 
