@@ -46,24 +46,70 @@ class TestPelialusta(unittest.TestCase):
         self.assertEqual(self.minmax.minimointi(self.alusta.pelialusta, -1, sys.maxsize, 0), (None, 253534.4))
 
     def test_minimointi(self):
-        self.alusta.pelialusta = [[4, 2, 8, 2], [2, 4, 2, 4], [8, 2, 4, 0], [0, 16, 8, 4]]
-        self.assertEqual(self.minmax.minimointi(self.alusta.pelialusta, -1, sys.maxsize, 2), ([2, 3, 2], 255781.5466666667))
+        self.alusta.pelialusta = [
+        [4, 2, 8, 2],
+        [2, 4, 2, 4],
+        [8, 2, 4, 0],
+        [0, 16, 8, 4]
+        ]
+        (siirto1, _) = self.minmax.minimointi(self.alusta.pelialusta, -1, sys.maxsize, 4)
+        self.assertEqual(siirto1, ([3, 0, 2]))
 
-        self.alusta.pelialusta = [[256, 0, 8, 2], [2, 0, 16, 4], [16, 2, 4, 0], [0, 16, 8, 4]]
-        self.assertEqual(self.minmax.minimointi(self.alusta.pelialusta, -1, sys.maxsize, 5), ([3, 0, 2], 10570408.36923077))
+        self.alusta.pelialusta = [
+        [4, 0, 8, 2],
+        [2, 0, 16, 4],
+        [16, 2, 4, 0],
+        [8, 16, 8, 4]
+        ]
+        (siirto2, _) = self.minmax.minimointi(self.alusta.pelialusta, -1, sys.maxsize, 4)
+        self.assertEqual(siirto2, ([2, 3, 2]))
+
+        self.alusta.pelialusta = [
+        [16, 4, 8, 2],
+        [4, 0, 4, 16],
+        [16, 4, 4, 2],
+        [8, 16, 8, 4]
+        ]
+        (siirto3, _) = self.minmax.minimointi(self.alusta.pelialusta, -1, sys.maxsize, 4)
+        self.assertEqual(siirto3, ([1, 1, 2]))
+
+        self.alusta.pelialusta = [
+        [2, 0, 0, 0],
+        [0, 0, 2, 0],
+        [0, 0, 0, 0],
+        [0, 0, 0, 0]
+        ]
+        (siirto4, _) = self.minmax.minimointi(self.alusta.pelialusta, -1, sys.maxsize, 4)
+        self.assertEqual(siirto4, ([1, 1, 4]))
 
     def test_maksimointi(self):
-        self.alusta.pelialusta = [[4, 2, 8, 2], [2, 4, 2, 4], [8, 2, 4, 2], [2, 16, 8, 4]]
-        self.assertEqual(self.minmax.maksimointi(self.alusta.pelialusta, -1, sys.maxsize, 0), (None, 236587.2))
+        self.alusta.pelialusta = [
+        [512, 2, 8, 4],
+        [4, 32, 4, 2],
+        [128, 64, 8, 16],
+        [2, 256, 2, 2]
+        ]
+        (siirto, _) = self.minmax.maksimointi(self.alusta.pelialusta, -(sys.maxsize), sys.maxsize, 5)
+        self.assertEqual(siirto, 'a')
 
-        self.alusta.pelialusta = [[256, 2, 8, 2], [256, 4, 2, 64], [8, 0, 16, 2], [2, 16, 0, 0]]
-        self.assertEqual(self.minmax.maksimointi(self.alusta.pelialusta, -1, sys.maxsize, 3), ('a', 24665944.436363637))
+        self.alusta.pelialusta = [
+        [1024, 512, 512, 4],
+        [4, 32, 4, 2],
+        [128, 64, 8, 16],
+        [2, 256, 2, 2]
+        ]
+        (siirto1, _) = self.minmax.maksimointi(self.alusta.pelialusta, -(sys.maxsize), sys.maxsize, 5)
+        (siirto2, _) = self.minmax.maksimointi(self.alusta.pelialusta, -(sys.maxsize), sys.maxsize, 5)
+        self.assertEqual(siirto1, 'a')
+        self.assertEqual(siirto2, 'a')
 
-        self.alusta.pelialusta = [[0, 2, 0, 2], [2, 0, 0, 0], [0, 0, 4, 0], [0, 0, 0, 0]]
-        self.assertEqual(self.minmax.maksimointi(self.alusta.pelialusta, -1, sys.maxsize, 5), ('w', 1130700.8))
-
-        self.alusta.pelialusta = [[8, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 2], [4, 0, 4, 2]]
-        self.assertEqual(self.minmax.maksimointi(self.alusta.pelialusta, -1, sys.maxsize, 5), ('s', 734003.2))
-
-        self.alusta.pelialusta = [[4, 8, 4, 32],[16, 64, 512, 128],[4, 8, 32, 16],[0, 0, 16, 128]]
-        self.assertEqual(self.minmax.maksimointi(self.alusta.pelialusta,-1, sys.maxsize, 2), ('a', 1128436.9066666667))
+        self.alusta.pelialusta = [
+        [8, 4, 4, 0],
+        [0, 0, 2, 2],
+        [0, 0, 0, 2],
+        [0, 0, 0, 0]
+        ]
+        (siirto1, _) = self.minmax.maksimointi(self.alusta.pelialusta, -(sys.maxsize), sys.maxsize, 5)
+        (siirto2, _) = self.minmax.maksimointi(self.alusta.pelialusta, -(sys.maxsize), sys.maxsize, 5)
+        self.assertEqual(siirto1, 'w')
+        self.assertEqual(siirto2, 'w')
