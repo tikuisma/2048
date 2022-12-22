@@ -3,9 +3,9 @@ Ohjelmaa on testattu automatisoiduilla unittest-testeillä sekä manuaalisesti t
 
 ## Yksikkö- ja integraatiotestaus
 ### Repositorio-luokat
-Repositorio-luokkaa ``Pelialusta`` testataan antamalla sille oma generoitu pelialusta ja tällä testataan luokan metodeita.
+Repositorio-luokkaa ``Pelialusta`` testataan antamalla sille oma generoitu pelialusta ja tällä testataan luokan metodeita. ------
 
-Repositorio-luokkaa ``Algoritmi`` testataan antamalla erilaisia pelialustoja eli näissä on lukuja, jotta voidaan tarkistaa onko metodien palauttama arvo oikea. 
+Repositorio-luokkaa ``Algoritmi`` testataan antamalla erilaisia pelialustoja eli näissä on lukuja, jotta voidaan tarkistaa onko metodien palauttama arvo oikea. ------
 
 ### Testauskattavuus
 Testauskattavuus on seuraavanlainen:
@@ -15,7 +15,7 @@ Testauskattavuutta pystyy tarkistelemaan paremmin ajettua testit ja katsomalla n
 Testauskattavuusraportin voit myös katsoa täältä: [Codecov](https://app.codecov.io/gh/tikuisma/2048). (Codecovin päivityksessä ollut ongelmia, joten ei välttämättä toimi)
 
 ## Järjestelmätestaus
-Pelin käynnistystiedostoa ``main.py`` on hankala testata unittestein, sillä se on ns. pelin käyttöliittymä. Siksi käynnistystiedosto onkin testattu manuaalisesti tekstikäyttöliittymässä.
+Pelin käynnistystiedostoa ``main.py`` on hankala testata unittestein, sillä se on ns. pelin käyttöliittymä. Siksi käynnistystiedosto onkin testattu manuaalisesti tekstikäyttöliittymässä. Testattu muun muassa virheelliset syötteiden annot ja pelin siirtojen toimivuus. Mikäli pelissä yritetään siirtyä suuntaan, jossa mikään ei siirtyisi, tämä ei ole mahdollista vaan käyttäjälle ilmoitetaan, että suunta ei ole ok. Algoritmin pelausta seurattu ja varmistettu, että pelin voitettaessa annetaan oikeat tulokset ja peli päättyy.
 
 ### Asennus ja konfigurointi
 Pelin [käyttöohjeessa](https://github.com/tikuisma/2048/blob/master/dokumentaatio/k%C3%A4ytt%C3%B6ohje.md) on pelin asennuksesta tarkemmin sekä pelin pikakäyttöopas.

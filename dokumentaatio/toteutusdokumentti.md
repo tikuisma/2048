@@ -8,7 +8,6 @@ Kooditiedostot on jaettu seuraavanlaisesti:
     - peli.py
     - tests
         - test_algoritmi.py
-        - test_main.py
         - test_pelialusta.py
 
 ### Kooditiedostojen sisältö
