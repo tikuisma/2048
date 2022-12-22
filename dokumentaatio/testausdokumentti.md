@@ -3,19 +3,19 @@ Ohjelmaa on testattu automatisoiduilla unittest-testeillä sekä manuaalisesti t
 
 ## Yksikkö- ja integraatiotestaus
 ### Repositorio-luokat
-Repositorio-luokkaa ``Pelialusta`` testataan antamalla sille oma generoitu pelialusta ja tällä testataan luokan metodeita. ------
+Repositorio-luokkaa ``Pelialusta`` testataan antamalla sille oma generoitu pelialusta ja tällä testataan luokan metodeita. Pelin eri toimivuuksia pyritty testaamaan mahdollisimman kattavasti erilaisilla pelialustoilla. Tarkistetaan, että palautetut arvot ovat halutunlaiset ja oikeat. Myös mahdollisuus pelin voitto -metodia on testattu täällä.
 
-Repositorio-luokkaa ``Algoritmi`` testataan antamalla erilaisia pelialustoja eli näissä on lukuja, jotta voidaan tarkistaa onko metodien palauttama arvo oikea. ------
+Repositorio-luokkaa ``Algoritmi`` testataan antamalla erilaisia pelialustoja eli näissä on lukuja, jotta voidaan tarkistaa onko metodien palauttama arvo oikea. Pyritty testaamaan MinMax-algoritmia mahdollisimman kattavasti antamalla erilaisia pelialustoja ja tekemällä näihin siirtoja sekä pelin satunnaisuuden vuoksi on itse määritelty mikä numero (2, 4) ilmestyy mahdollisimman huonoimpaan paikkaan.
 
 ### Testauskattavuus
 Testauskattavuus on seuraavanlainen:
 ![Screenshot from 2022-12-21 20-02-59](https://user-images.githubusercontent.com/93583969/208976522-d4eed046-ed9f-48f8-81d5-6036f5f41844.png)
 
 Testauskattavuutta pystyy tarkistelemaan paremmin ajettua testit ja katsomalla ne htmlcov:n ``index.html``-tiedostosta.
-Testauskattavuusraportin voit myös katsoa täältä: [Codecov](https://app.codecov.io/gh/tikuisma/2048). (Codecovin päivityksessä ollut ongelmia, joten ei välttämättä toimi)
+Testauskattavuusraportin voit myös katsoa täältä: [Codecov](https://app.codecov.io/gh/tikuisma/2048). (Minulla on ollut ongelmia Codecovin päivityksen kanssa, joten palvelu ei välttämättä ole ajan tasalla.)
 
 ## Järjestelmätestaus
-Pelin käynnistystiedostoa ``main.py`` on hankala testata unittestein, sillä se on ns. pelin käyttöliittymä. Siksi käynnistystiedosto onkin testattu manuaalisesti tekstikäyttöliittymässä. Testattu muun muassa virheelliset syötteiden annot ja pelin siirtojen toimivuus. Mikäli pelissä yritetään siirtyä suuntaan, jossa mikään ei siirtyisi, tämä ei ole mahdollista vaan käyttäjälle ilmoitetaan, että suunta ei ole ok. Algoritmin pelausta seurattu ja varmistettu, että pelin voitettaessa annetaan oikeat tulokset ja peli päättyy.
+Pelin käynnistystiedostoa ``main.py`` on hankala testata unittestein, sillä se on ns. pelin käyttöliittymä. Siksi käynnistystiedosto onkin testattu manuaalisesti tekstikäyttöliittymässä. Testattu muun muassa virheelliset syötteiden annot ja pelin siirtojen toimivuus. Mikäli pelissä yritetään siirtyä suuntaan, jossa mikään ei siirtyisi, tämä ei ole mahdollista vaan käyttäjälle ilmoitetaan, että suunta ei ole ok. Algoritmin pelausta seurattu ja varmistettu, että pelin voitettaessa annetaan oikeat tulokset ja peli päättyy. Pelin voittomahdollisuus on algoritmilla ajettuna noin 1/10 pelistä, tätä on testattu ajamalla useampi testi kerrallaan.
 
 ### Asennus ja konfigurointi
 Pelin [käyttöohjeessa](https://github.com/tikuisma/2048/blob/master/dokumentaatio/k%C3%A4ytt%C3%B6ohje.md) on pelin asennuksesta tarkemmin sekä pelin pikakäyttöopas.
