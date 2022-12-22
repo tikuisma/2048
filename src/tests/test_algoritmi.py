@@ -204,3 +204,25 @@ class TestPelialusta(unittest.TestCase):
 
         (siirto4, _) = self.minmax.maksimointi(self.alusta.pelialusta, -(sys.maxsize * 2), sys.maxsize*2, 5)
         self.assertEqual(siirto4, 'a')
+
+    def test_haviaa_pelin(self):
+        self.alusta.pelialusta = [
+        [128, 512, 1024, 8],
+        [1024, 128, 16, 2],
+        [2, 8, 64, 16],
+        [512, 16, 0, 2]
+        ]
+
+        (siirto1, _) = self.minmax.maksimointi(self.alusta.pelialusta, -(sys.maxsize * 2), sys.maxsize * 2, 5)
+        self.assertEqual(siirto1, 'a')
+
+        self.alusta.pelialusta = [
+        [128, 512, 1024, 8],
+        [1024, 128, 16, 2],
+        [2, 8, 64, 16],
+        [512, 16, 2, 4]
+        ]
+
+        (siirto2, _) = self.minmax.maksimointi(self.alusta.pelialusta, -(sys.maxsize * 2), sys.maxsize * 2, 5)
+        self.assertEqual(siirto2, None)
+        #häviää pelin eli palauttaa None
