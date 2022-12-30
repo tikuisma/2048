@@ -17,8 +17,8 @@ Valitun siirron jälkeen tulee painaa Enter-näppäintä.
 Katso tarkemmin pelistä [vaatimusmäärittelystä](https://github.com/tikuisma/2048/blob/master/dokumentaatio/vaatimusmaarittely.md).
 
 ## Asennus
-1. Helpoin tapa on kloonata repo omalle koneellesi.
-2. Asenna sitten repon riippuvuudet komennolla: ``poetry install``.
+1. Voit ladata ohjelman releasena [etusivulta](https://github.com/tikuisma/2048) tai kloonata repon omalle koneellesi.
+2. Asenna tämän jälkeen riippuvuudet komennolla: ``poetry install``.
 3. Siirry sitten src-kansion sisälle ja aja komento: ``python3 main.py``, jolloin peli lähtee käyntiin.
 
 ### Testien ajaminen
